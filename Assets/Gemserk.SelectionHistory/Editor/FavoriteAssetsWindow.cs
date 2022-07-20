@@ -26,16 +26,14 @@ namespace Gemserk
 
         private static void FavoriteElements(Object[] references)
         {
-            var favorites = FavoritesController.Favorites;
-
             foreach (var reference in references)
             {
-                if (favorites.IsFavorite(reference))
+                if (Favorites.IsFavorite(reference))
                     continue;
             
-                if (favorites.CanBeFavorite(Selection.activeObject))
+                if (Favorites.CanBeFavorite(Selection.activeObject))
                 {
-                    favorites.AddFavorite(new Favorites.Favorite
+                    Favorites.AddFavorite(new Favorites.Favorite
                     {
                         reference = reference
                     });   
@@ -43,24 +41,13 @@ namespace Gemserk
             }
         }
 
-        private Favorites _favorites;
-
         public StyleSheet styleSheet;
 
         public VisualTreeAsset favoriteElementTreeAsset;
         
-        private void OnDisable()
-        {
-            if (_favorites != null)
-            {
-                _favorites.OnFavoritesUpdated -= OnFavoritesUpdated;
-            }
-        }
-
         public void OnEnable()
         {
-            _favorites = FavoritesController.Favorites;
-            _favorites.OnFavoritesUpdated += OnFavoritesUpdated;
+            Favorites.OnFavoritesUpdated += OnFavoritesUpdated;
             
             var root = rootVisualElement;
             root.styleSheets.Add(styleSheet);
@@ -79,7 +66,7 @@ namespace Gemserk
             ReloadRoot();
         }
 
-        private void OnFavoritesUpdated(Favorites favorites)
+        private void OnFavoritesUpdated()
         {
             var root = rootVisualElement;
             root.Clear();
@@ -96,9 +83,9 @@ namespace Gemserk
             var scroll = new ScrollView(ScrollViewMode.Vertical);
             root.Add(scroll);
 
-            for (var i = 0; i < _favorites.favoritesList.Count; i++)
+            for (var i = 0; i < Favorites.FavoritesList.Count; i++)
             {
-                var assetReference = _favorites.favoritesList[i].reference;
+                var assetReference = Favorites.FavoritesList[i].reference;
 
                 if (assetReference == null)
                     continue;
@@ -158,7 +145,7 @@ namespace Gemserk
                     
                     removeIcon.RegisterCallback(delegate(MouseUpEvent e)
                     {
-                        FavoritesController.Favorites.RemoveFavorite(assetReference);
+                        Favorites.RemoveFavorite(assetReference);
                     });
                 }
                 

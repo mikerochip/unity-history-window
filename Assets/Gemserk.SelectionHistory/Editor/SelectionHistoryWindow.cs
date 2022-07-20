@@ -52,7 +52,7 @@ namespace Gemserk
                 selectionHistory.OnNewEntryAdded += OnHistoryEntryAdded;
             }
 
-            FavoritesController.Favorites.OnFavoritesUpdated += delegate
+            Favorites.OnFavoritesUpdated += delegate
             {
                 ReloadRoot();
             };
@@ -279,14 +279,14 @@ namespace Gemserk
                     var favoriteAsset = elementTree.Q<Image>("Favorite");
                     if (favoriteAsset != null)
                     {
-                        var isFavorite = FavoritesController.Favorites.IsFavorite(entry.reference);
+                        var isFavorite = Favorites.IsFavorite(entry.reference);
                         // favoriteEmptyIconName
                         favoriteAsset.image = isFavorite
                             ? EditorGUIUtility.IconContent(UnityBuiltInIcons.favoriteIconName).image
                             : EditorGUIUtility.IconContent(UnityBuiltInIcons.favoriteEmptyIconName).image;
                         favoriteAsset.RegisterCallback(delegate(MouseUpEvent e)
                         {
-                            FavoritesController.Favorites.AddFavorite(new Favorites.Favorite
+                            Favorites.AddFavorite(new Favorites.Favorite
                             {
                                 reference = entry.reference
                             });
