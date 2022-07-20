@@ -9,7 +9,7 @@ namespace SelectionHistory.Editor
 {
     public class SelectionHistoryWindow : EditorWindow, IHasCustomMenu
     {
-        [MenuItem("Window/Gemserk/Selection History %#h")]
+        [MenuItem("Window/Selection History/Selection History %#h")]
         public static void OpenWindow()
         {
             var window = GetWindow<SelectionHistoryWindow>();

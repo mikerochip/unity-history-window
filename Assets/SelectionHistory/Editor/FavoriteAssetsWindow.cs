@@ -7,7 +7,7 @@ namespace SelectionHistory.Editor
 {
     public class FavoriteAssetsWindow : EditorWindow
     {
-        [MenuItem("Window/Gemserk/Favorites")]
+        [MenuItem("Window/Selection History/Favorites")]
         public static void OpenWindow()
         {
             var window = GetWindow<FavoriteAssetsWindow>();
@@ -18,7 +18,7 @@ namespace SelectionHistory.Editor
         }
 
         [MenuItem("Assets/Favorite Item")]
-        [Shortcut("Gemserk/Favorite Item", null, KeyCode.F, ShortcutModifiers.Shift | ShortcutModifiers.Alt)]
+        [Shortcut("Selection History/Favorite Item", null, KeyCode.F, ShortcutModifiers.Shift | ShortcutModifiers.Alt)]
         public static void Favorite()
         { 
             FavoriteElements(Selection.objects);

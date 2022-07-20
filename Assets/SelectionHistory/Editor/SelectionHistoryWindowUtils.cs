@@ -37,7 +37,7 @@ namespace SelectionHistory.Editor
 		    } 
 	    }
 		
-	    [MenuItem("Window/Gemserk/Previous selection %#,")]
+	    [MenuItem("Window/Selection History/Previous selection %#,")]
 	    [Shortcut("Selection History/Previous Selection")]
 	    public static void PreviousSelection()
 	    {
@@ -46,7 +46,7 @@ namespace SelectionHistory.Editor
 		    Selection.activeObject = selectionHistory.GetSelection ();
 	    }
 
-	    [MenuItem("Window/Gemserk/Next selection %#.")]
+	    [MenuItem("Window/Selection History/Next selection %#.")]
 	    [Shortcut("Selection History/Next Selection")]
 	    public static void NextSelection()
 	    {

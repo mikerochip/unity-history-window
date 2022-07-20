@@ -7,7 +7,7 @@ using Object = UnityEngine.Object;
 
 namespace SelectionHistory.Editor
 {
-    [FilePath("UserSettings/Gemserk/Favorites.asset", FilePathAttribute.Location.ProjectFolder)]
+    [FilePath("UserSettings/SelectionHistory/Favorites.asset", FilePathAttribute.Location.ProjectFolder)]
     public class Favorites : ScriptableSingleton<Favorites>
     {
         [Serializable]
