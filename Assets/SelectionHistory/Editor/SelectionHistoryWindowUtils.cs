@@ -2,11 +2,11 @@
 using UnityEditor.ShortcutManagement;
 using UnityEngine;
 
-namespace Gemserk
+namespace SelectionHistory.Editor
 {
 	[InitializeOnLoad]
-	public static class SelectionHistoryWindowUtils {
-
+	public static class SelectionHistoryWindowUtils
+	{
 		public static readonly string HistorySizePrefKey = "Gemserk.SelectionHistory.HistorySize";
 		public static readonly string HistoryAutomaticRemoveDeletedPrefKey = "Gemserk.SelectionHistory.AutomaticRemoveDeleted";
 		public static readonly string HistoryAllowDuplicatedEntriesPrefKey = "Gemserk.SelectionHistory.AllowDuplicatedEntries";

@@ -1,4 +1,4 @@
-namespace Gemserk
+namespace SelectionHistory.Editor
 {
     public static class UnityBuiltInIcons
     {

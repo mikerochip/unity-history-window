@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 
-namespace Gemserk
+namespace SelectionHistory.Editor
 {
     public class SelectionHistoryWindow : EditorWindow, IHasCustomMenu
     {

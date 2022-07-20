@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-namespace Gemserk
+namespace SelectionHistory
 {
 	public class EditorTemporaryMemory : MonoBehaviour
 	{

@@ -4,7 +4,7 @@ using System.Linq;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
-namespace Gemserk
+namespace SelectionHistory
 {
     [Serializable]
     public class SelectionHistory

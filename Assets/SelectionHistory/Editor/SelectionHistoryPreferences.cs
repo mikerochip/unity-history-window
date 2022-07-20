@@ -1,8 +1,10 @@
 ﻿using UnityEngine;
 using UnityEditor;
 
-namespace Gemserk {
-    public static class SelectionHistoryPreferences {
+namespace SelectionHistory.Editor
+{
+    public static class SelectionHistoryPreferences
+    {
 
         static bool prefsLoaded = false;
 

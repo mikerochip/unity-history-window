@@ -5,7 +5,7 @@ using UnityEditor;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
-namespace Gemserk
+namespace SelectionHistory.Editor
 {
     [FilePath("UserSettings/Gemserk/Favorites.asset", FilePathAttribute.Location.ProjectFolder)]
     public class Favorites : ScriptableSingleton<Favorites>

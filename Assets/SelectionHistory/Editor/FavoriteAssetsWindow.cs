@@ -3,7 +3,7 @@ using UnityEditor.ShortcutManagement;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-namespace Gemserk
+namespace SelectionHistory.Editor
 {
     public class FavoriteAssetsWindow : EditorWindow
     {

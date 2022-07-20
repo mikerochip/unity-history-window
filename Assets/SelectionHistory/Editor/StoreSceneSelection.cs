@@ -3,7 +3,7 @@ using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace Gemserk
+namespace SelectionHistory.Editor
 {
     [InitializeOnLoad]
     public static class StoreSceneSelection
