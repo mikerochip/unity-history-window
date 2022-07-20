@@ -1,0 +1,18 @@
+{
+  "name": "com.selectionhistory",
+  "version": "1.2.0",
+  "displayName": "Selection History",
+  "description": "Provides selection history navigation and saves favorites. Fork: https://github.com/mikerochip/unity-history-window. Original: https://github.com/acoppes/unity-history-window.",
+  "unity": "2020.1",
+  "unityRelease": "0f1",
+  "keywords": [
+    "ui",
+    "tools",
+    "selection",
+    "history"
+  ],
+  "author": {
+    "name": "Mike Schweitzer",
+    "email": "mschweitzer@gmail.com"
+  }
+}
