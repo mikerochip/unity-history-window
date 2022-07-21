@@ -1,5 +1,5 @@
 {
-  "name": "com.mikerochip.selectionhistory",
+  "name": "com.mikerochip.selection-history",
   "version": "1.3.0",
   "displayName": "Selection History",
   "description": "Provides selection history navigation and saves favorites. Fork of https://github.com/acoppes/unity-history-window",
@@ -14,6 +14,6 @@
   "author": {
     "name": "Mike Schweitzer",
     "email": "mschweitzer@gmail.com",
-    "url": "https://github.com/mikerochip/unity-history-window"
+    "url": "https://github.com/mikerochip/unity-selection-history"
   }
 }
