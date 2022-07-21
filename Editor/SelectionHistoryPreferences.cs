@@ -60,12 +60,12 @@ namespace SelectionHistory.Editor
                 Save();
             }
         }
-        public static bool ShowFavoriteButton
+        public static bool ShowPinFavoriteButton
         {
-            get => instance.showFavoriteButton;
+            get => instance.showPinFavoriteButton;
             set
             {
-                instance.showFavoriteButton = value;
+                instance.showPinFavoriteButton = value;
                 Save();
             }
         }
@@ -78,15 +78,6 @@ namespace SelectionHistory.Editor
                 Save();
             }
         }
-        public static bool DrawFavorites
-        {
-            get => instance.drawFavorites;
-            set
-            {
-                instance.drawFavorites = value;
-                Save();
-            }
-        }
         
         [SerializeField] private int historySize = 500;
         [SerializeField] private bool autoRemoveDestroyed = true;
@@ -94,9 +85,8 @@ namespace SelectionHistory.Editor
         [SerializeField] private bool showHierarchyObjects = true;
         [SerializeField] private bool showUnloadedObjects = true;
         [SerializeField] private bool showDestroyedObjects;
-        [SerializeField] private bool showFavoriteButton;
+        [SerializeField] private bool showPinFavoriteButton = true;
         [SerializeField] private bool showProjectViewObjects = true;
-        [SerializeField] private bool drawFavorites = true;
 
         [SettingsProvider]
         public static SettingsProvider CreateSelectionHistorySettingsProvider() {
@@ -114,7 +104,7 @@ namespace SelectionHistory.Editor
             allowDuplicated = EditorGUILayout.Toggle("Allow Duplicated entries", allowDuplicated);
             showHierarchyObjects = EditorGUILayout.Toggle("Show Hierarchy objects", showHierarchyObjects);
             showProjectViewObjects = EditorGUILayout.Toggle("Show ProjectView objects", showProjectViewObjects);
-            drawFavorites = EditorGUILayout.Toggle("Show Pin to favorites button", drawFavorites);
+            showPinFavoriteButton = EditorGUILayout.Toggle("Show Pin to favorites button", showPinFavoriteButton);
             
             if (GUI.changed)
                 Save();

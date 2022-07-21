@@ -146,7 +146,7 @@ namespace SelectionHistory.Editor
                 {
                     selectionHistory.RemoveEntries(SelectionHistory.Entry.State.ReferenceDestroyed);
                     ReloadRoot();
-                }) {text = "Remove destroyed"};
+                }) {text = "Remove Destroyed"};
                 root.Add(removeDestroyedButton);
             }
             
@@ -271,7 +271,7 @@ namespace SelectionHistory.Editor
                 pingIcon.RegisterCallback(delegate(MouseUpEvent e) { SelectionHistoryWindowUtils.PingEntry(entry); });
             }
 
-            if (SelectionHistoryPreferences.ShowFavoriteButton)
+            if (SelectionHistoryPreferences.ShowPinFavoriteButton)
             {
                 if (entry.isAsset &&
                     entry.GetReferenceState() == SelectionHistory.Entry.State.Referenced)
@@ -318,7 +318,7 @@ namespace SelectionHistory.Editor
             if (SelectionHistoryPreferences.ShowHierarchyObjects)
             {
                 content = MakeMenuItemContent(SelectionHistoryPreferences.ShowUnloadedObjects, "Unloaded Objects", 
-                    "Toggle to show/hide unloaded objects from scenes hierarchy view.");
+                    "Toggle to show/hide unloaded objects from scene hierarchy.");
                 menu.AddItem(content, false, () =>
                 {
                     SelectionHistoryPreferences.ShowUnloadedObjects = !SelectionHistoryPreferences.ShowUnloadedObjects;
@@ -334,11 +334,11 @@ namespace SelectionHistory.Editor
                 ReloadRoot();
             });
             
-            content = MakeMenuItemContent(SelectionHistoryPreferences.ShowFavoriteButton, "Favorite Button", 
-                "Toggle to show/hide favorite reference button.");
+            content = MakeMenuItemContent(SelectionHistoryPreferences.ShowPinFavoriteButton, "Pin Favorite Button", 
+                "Toggle to show/hide button to pin selections as favorites.");
             menu.AddItem(content, false, () =>
             {
-                SelectionHistoryPreferences.ShowFavoriteButton = !SelectionHistoryPreferences.ShowFavoriteButton;
+                SelectionHistoryPreferences.ShowPinFavoriteButton = !SelectionHistoryPreferences.ShowPinFavoriteButton;
                 ReloadRoot();
             });
             
