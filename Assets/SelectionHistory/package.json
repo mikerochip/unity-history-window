@@ -1,8 +1,8 @@
 {
-  "name": "com.selectionhistory",
-  "version": "1.2.0",
+  "name": "com.mikerochip.selectionhistory",
+  "version": "1.3.0",
   "displayName": "Selection History",
-  "description": "Provides selection history navigation and saves favorites. Fork: https://github.com/mikerochip/unity-history-window. Original: https://github.com/acoppes/unity-history-window.",
+  "description": "Provides selection history navigation and saves favorites. Fork of https://github.com/acoppes/unity-history-window",
   "unity": "2020.1",
   "unityRelease": "0f1",
   "keywords": [
@@ -13,6 +13,7 @@
   ],
   "author": {
     "name": "Mike Schweitzer",
-    "email": "mschweitzer@gmail.com"
+    "email": "mschweitzer@gmail.com",
+    "url": "https://github.com/mikerochip/unity-history-window"
   }
 }
