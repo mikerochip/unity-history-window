@@ -48,7 +48,7 @@ namespace SelectionHistory.Editor
             
             if (selectionHistory != null)
             {
-                selectionHistory.HistorySize = EditorPrefs.GetInt(SelectionHistoryWindowUtils.HistorySizePrefKey, 10);
+                selectionHistory.HistorySize = SelectionHistoryPreferences.HistorySize;
                 selectionHistory.OnNewEntryAdded += OnHistoryEntryAdded;
             }
 
@@ -94,10 +94,10 @@ namespace SelectionHistory.Editor
             
             root.Clear();
             
-            if (SelectionHistoryWindowUtils.AutomaticRemoveDeleted)
+            if (SelectionHistoryPreferences.AutoRemoveDestroyed)
                 selectionHistory.RemoveEntries(SelectionHistory.Entry.State.ReferenceDestroyed);
 
-            if (!SelectionHistoryWindowUtils.AllowDuplicatedEntries)
+            if (!SelectionHistoryPreferences.AllowDuplicated)
                 selectionHistory.RemoveDuplicated();
 
             var scroll = new ScrollView(ScrollViewMode.Vertical)
@@ -109,8 +109,8 @@ namespace SelectionHistory.Editor
 
             var entries = selectionHistory.History;
 
-            var showUnloadedObjects = SelectionHistoryWindowUtils.ShowUnloadedObjects;
-            var showDestroyedObjects = SelectionHistoryWindowUtils.ShowDestroyedObjects;
+            var showUnloadedObjects = SelectionHistoryPreferences.ShowUnloadedObjects;
+            var showDestroyedObjects = SelectionHistoryPreferences.ShowDestroyedObjects;
 
             for (var i = 0; i < entries.Count; i++)
             {
@@ -181,9 +181,9 @@ namespace SelectionHistory.Editor
 
         private VisualElement CreateElementForEntry(SelectionHistory.Entry entry)
         {
-            var showHierarchyElements = SelectionHistoryWindowUtils.ShowHierarchyViewObjects;
-            var showUnloadedObjects = SelectionHistoryWindowUtils.ShowUnloadedObjects;
-            var showDestroyedObjects = SelectionHistoryWindowUtils.ShowDestroyedObjects;
+            var showHierarchyElements = SelectionHistoryPreferences.ShowHierarchyObjects;
+            var showUnloadedObjects = SelectionHistoryPreferences.ShowUnloadedObjects;
+            var showDestroyedObjects = SelectionHistoryPreferences.ShowDestroyedObjects;
             
             if (entry.isSceneInstance && !showHierarchyElements)
             {
@@ -271,7 +271,7 @@ namespace SelectionHistory.Editor
                 pingIcon.RegisterCallback(delegate(MouseUpEvent e) { SelectionHistoryWindowUtils.PingEntry(entry); });
             }
 
-            if (SelectionHistoryWindowUtils.ShowFavoriteButton)
+            if (SelectionHistoryPreferences.ShowFavoriteButton)
             {
                 if (entry.isAsset &&
                     entry.GetReferenceState() == SelectionHistory.Entry.State.Referenced)
@@ -307,47 +307,51 @@ namespace SelectionHistory.Editor
 
         public void AddItemsToMenu(GenericMenu menu)
         {
-            var showHierarchyViewObjects =
-                EditorPrefs.GetBool(SelectionHistoryWindowUtils.HistoryShowHierarchyObjectsPrefKey, true);
-            
-            AddMenuItemForPreference(menu, SelectionHistoryWindowUtils.HistoryShowHierarchyObjectsPrefKey, "HierarchyView Objects", 
+            var content = MakeMenuItemContent(SelectionHistoryPreferences.ShowHierarchyObjects, "Hierarchy Objects", 
                 "Toggle to show/hide objects from scene hierarchy view.");
-		 
-            if (showHierarchyViewObjects)
+            menu.AddItem(content, false, () =>
             {
-                AddMenuItemForPreference(menu, SelectionHistoryWindowUtils.ShowUnloadedObjectsKey, "Unloaded Objects", 
+                SelectionHistoryPreferences.ShowHierarchyObjects = !SelectionHistoryPreferences.ShowHierarchyObjects;
+                ReloadRoot();
+            });
+            
+            if (SelectionHistoryPreferences.ShowHierarchyObjects)
+            {
+                content = MakeMenuItemContent(SelectionHistoryPreferences.ShowUnloadedObjects, "Unloaded Objects", 
                     "Toggle to show/hide unloaded objects from scenes hierarchy view.");
-            } 
-		    
-            AddMenuItemForPreference(menu, SelectionHistoryWindowUtils.ShowDestroyedObjectsKey, "Destroyed Objects", 
+                menu.AddItem(content, false, () =>
+                {
+                    SelectionHistoryPreferences.ShowUnloadedObjects = !SelectionHistoryPreferences.ShowUnloadedObjects;
+                    ReloadRoot();
+                });
+            }
+            
+            content = MakeMenuItemContent(SelectionHistoryPreferences.ShowDestroyedObjects, "Destroyed Objects", 
                 "Toggle to show/hide unreferenced or destroyed objects.");
+            menu.AddItem(content, false, () =>
+            {
+                SelectionHistoryPreferences.ShowDestroyedObjects = !SelectionHistoryPreferences.ShowDestroyedObjects;
+                ReloadRoot();
+            });
             
-            AddMenuItemForPreference(menu, SelectionHistoryWindowUtils.HistoryShowPinButtonPrefKey, "Favorite Button", 
+            content = MakeMenuItemContent(SelectionHistoryPreferences.ShowFavoriteButton, "Favorite Button", 
                 "Toggle to show/hide favorite reference button.");
+            menu.AddItem(content, false, () =>
+            {
+                SelectionHistoryPreferences.ShowFavoriteButton = !SelectionHistoryPreferences.ShowFavoriteButton;
+                ReloadRoot();
+            });
             
-            menu.AddItem(new GUIContent("Open preferences"), false, delegate
+            menu.AddItem(new GUIContent("Open preferences"), false, () =>
             {
                 SettingsService.OpenUserPreferences("Selection History");
             });
         }
 
-        private void AddMenuItemForPreference(GenericMenu menu, string preference, string text, string tooltip)
+        private static GUIContent MakeMenuItemContent(bool value, string text, string tooltip)
         {
-            const bool defaultValue = true;
-            var value = EditorPrefs.GetBool(preference, defaultValue);
-            var name = value ? $"Hide {text}" : $"Show {text}";
-            menu.AddItem(new GUIContent(name, tooltip), false, delegate
-            {
-                ToggleBoolEditorPref(preference, defaultValue);
-                ReloadRoot();
-            });
-        }
-
-        private static void ToggleBoolEditorPref(string preferenceName, bool defaultValue)
-        {
-            var newValue = !EditorPrefs.GetBool(preferenceName, defaultValue);
-            EditorPrefs.SetBool(preferenceName, newValue);
-            // return newValue;
+            var label = value ? $"Hide {text}" : $"Show {text}";
+            return new GUIContent(label, tooltip);
         }
     }
 }
