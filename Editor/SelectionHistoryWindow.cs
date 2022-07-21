@@ -271,28 +271,32 @@ namespace SelectionHistory.Editor
                 pingIcon.RegisterCallback(delegate(MouseUpEvent e) { SelectionHistoryWindowUtils.PingEntry(entry); });
             }
 
-            if (SelectionHistoryPreferences.ShowPinFavoriteButton)
+            if (SelectionHistoryPreferences.ShowPinFavoriteButton
+                && entry.isAsset
+                && entry.GetReferenceState() == SelectionHistory.Entry.State.Referenced)
             {
-                if (entry.isAsset &&
-                    entry.GetReferenceState() == SelectionHistory.Entry.State.Referenced)
+                var favoriteAsset = elementTree.Q<Image>("Favorite");
+                if (favoriteAsset != null)
                 {
-                    var favoriteAsset = elementTree.Q<Image>("Favorite");
-                    if (favoriteAsset != null)
+                    var isFavorite = Favorites.IsFavorite(entry.reference);
+                    favoriteAsset.image = isFavorite
+                        ? EditorGUIUtility.IconContent(UnityBuiltInIcons.favoriteIconName).image
+                        : EditorGUIUtility.IconContent(UnityBuiltInIcons.favoriteEmptyIconName).image;
+                    favoriteAsset.RegisterCallback(delegate(MouseUpEvent e)
                     {
-                        var isFavorite = Favorites.IsFavorite(entry.reference);
-                        // favoriteEmptyIconName
-                        favoriteAsset.image = isFavorite
-                            ? EditorGUIUtility.IconContent(UnityBuiltInIcons.favoriteIconName).image
-                            : EditorGUIUtility.IconContent(UnityBuiltInIcons.favoriteEmptyIconName).image;
-                        favoriteAsset.RegisterCallback(delegate(MouseUpEvent e)
+                        if (isFavorite)
+                        {
+                            Favorites.RemoveFavorite(entry.reference);
+                        }
+                        else
                         {
                             Favorites.AddFavorite(new Favorites.Favorite
                             {
                                 reference = entry.reference
                             });
-                            ReloadRoot();
-                        });
-                    }
+                        }
+                        ReloadRoot();
+                    });
                 }
             }
 
