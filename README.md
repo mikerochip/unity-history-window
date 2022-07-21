@@ -1,13 +1,14 @@
-# Unity Selection History Window
+# Unity Selection History
 
-This is a small plugin that keeps a history of the Unity's Editor object selection (it stores in the background) and displays it in a Window to easily access it. 
+This is a small plugin that keeps a history of object selections and displays them in a Window. It also supports favoriting selections.
 
-It is really useful when editing stuff and following a link to an object reference to see some details and then go back to previous selection.
+To use: ```Window > Selection History```
 
 # Features
 
-* Stores history of selected objects (custom count).
-* Selects objects from the history (with left click).
-* Pings (focus) objects from the history (with right click or Ping button).
-* Drag objects from history to other object fields to link them.
-* Drag assets (folders, scripts, etc) from history to the project browser to move them.
+* History of selected objects with configurable count
+* Selects objects from the history window
+* Favorite objects in the history window
+* Drag objects from history to other object fields to link them
+* Drag assets (folders, scripts, etc) from history to the project browser to move them
+* Navigate history selections programmatically to make custom navigation UI
