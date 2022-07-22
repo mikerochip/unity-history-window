@@ -267,7 +267,7 @@ namespace SelectionHistory.Editor
             var pingIcon = elementTree.Q<Image>("PingIcon");
             if (pingIcon != null)
             {
-                pingIcon.image = EditorGUIUtility.IconContent(UnityBuiltInIcons.searchIconName).image;
+                pingIcon.image = EditorGUIUtility.IconContent(UnityBuiltInIcons.SearchIconName).image;
                 pingIcon.RegisterCallback(delegate(MouseUpEvent e) { SelectionHistoryWindowUtils.PingEntry(entry); });
             }
 
@@ -280,8 +280,8 @@ namespace SelectionHistory.Editor
                 {
                     var isFavorite = Favorites.IsFavorite(entry.reference);
                     favoriteAsset.image = isFavorite
-                        ? EditorGUIUtility.IconContent(UnityBuiltInIcons.favoriteIconName).image
-                        : EditorGUIUtility.IconContent(UnityBuiltInIcons.favoriteEmptyIconName).image;
+                        ? EditorGUIUtility.IconContent(UnityBuiltInIcons.FavoriteIconName).image
+                        : EditorGUIUtility.IconContent(UnityBuiltInIcons.FavoriteEmptyIconName).image;
                     favoriteAsset.RegisterCallback(delegate(MouseUpEvent e)
                     {
                         if (isFavorite)

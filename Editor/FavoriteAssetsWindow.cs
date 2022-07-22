@@ -11,7 +11,7 @@ namespace SelectionHistory.Editor
         public static void OpenWindow()
         {
             var window = GetWindow<FavoriteAssetsWindow>();
-            var titleContent = EditorGUIUtility.IconContent(UnityBuiltInIcons.favoriteIconName);
+            var titleContent = EditorGUIUtility.IconContent(UnityBuiltInIcons.FavoriteIconName);
             titleContent.text = "Favorites";
             titleContent.tooltip = "Favorite assets window";
             window.titleContent = titleContent;
@@ -141,7 +141,7 @@ namespace SelectionHistory.Editor
                 if (removeIcon != null)
                 {
                     // removeIcon.image = AssetPreview.GetMiniThumbnail(assetReference);
-                    removeIcon.image = EditorGUIUtility.IconContent(UnityBuiltInIcons.removeIconName).image;
+                    removeIcon.image = EditorGUIUtility.IconContent(UnityBuiltInIcons.RemoveIconName).image;
                     
                     removeIcon.RegisterCallback(delegate(MouseUpEvent e)
                     {
