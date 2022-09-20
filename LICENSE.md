@@ -1,6 +1,7 @@
 The MIT License (MIT)
 
-Copyright 2022 Ariel Coppes
+Copyright 2022 Michael Schweitzer\
+Copyright 2022 Ariel Coppes\
 Copyright 2013 Henry Tang Kai
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
