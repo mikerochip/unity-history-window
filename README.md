@@ -4,6 +4,8 @@ This is a small plugin that keeps a history of object selections and displays th
 
 To use: ```Window > Selection History```
 
+⚠️ **Requires Unity 2020.1 since it saves configuration to your UserSettings folder**
+
 # Features
 
 * History of selected objects with configurable count
