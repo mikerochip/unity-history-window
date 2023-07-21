@@ -53,7 +53,7 @@ namespace MikeSchweitzer.SelectionHistory
 
                 if (reference is GameObject go)
                 {
-                    if (go.scene != null)
+                    if (go.scene.isLoaded)
                     {
                         sceneName = go.scene.name;
                         scenePath = go.scene.path;
