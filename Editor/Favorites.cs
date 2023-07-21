@@ -45,7 +45,7 @@ namespace MikeSchweitzer.SelectionHistory.Editor
         {
             if (reference is GameObject go)
             {
-                return go.scene == null;
+                return !go.scene.IsValid();
             }
             return true;
         }

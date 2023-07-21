@@ -1,3 +1,4 @@
+using System.Linq;
 using UnityEditor;
 using UnityEditor.ShortcutManagement;
 using UnityEngine;
@@ -17,25 +18,34 @@ namespace MikeSchweitzer.SelectionHistory.Editor
             window.titleContent = titleContent;
         }
 
-        [MenuItem("Assets/Favorite Item")]
-        [Shortcut("Selection History/Favorite Item", null, KeyCode.F, ShortcutModifiers.Shift | ShortcutModifiers.Alt)]
-        public static void Favorite()
-        { 
+        [MenuItem("Assets/Add to Favorites", isValidateFunction: true)]
+        public static bool ValidateAddFavorites()
+        {
+            var count = Selection.objects.Count(obj =>
+                !Favorites.IsFavorite(obj) && Favorites.CanBeFavorite(obj));
+
+            return count > 0;
+        }
+
+        [MenuItem("Assets/Add to Favorites")]
+        [Shortcut("Selection History/Add to Favorites", null, KeyCode.F, ShortcutModifiers.Shift | ShortcutModifiers.Alt)]
+        public static void AddFavorites()
+        {
             FavoriteElements(Selection.objects);
         }
 
-        private static void FavoriteElements(Object[] references)
+        private static void FavoriteElements(Object[] objects)
         {
-            foreach (var reference in references)
+            foreach (var obj in objects)
             {
-                if (Favorites.IsFavorite(reference))
+                if (Favorites.IsFavorite(obj))
                     continue;
             
-                if (Favorites.CanBeFavorite(Selection.activeObject))
+                if (Favorites.CanBeFavorite(obj))
                 {
                     Favorites.AddFavorite(new Favorites.Favorite
                     {
-                        reference = reference
+                        reference = obj
                     });   
                 }
             }
