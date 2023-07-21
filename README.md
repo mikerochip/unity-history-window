@@ -1,10 +1,12 @@
 # Unity Selection History
 
+[![Unity Version](https://img.shields.io/badge/Unity-2020.1%2B-blueviolet?logo=unity)](https://unity.com/releases/editor/archive)
+
 This is a small plugin that keeps a history of object selections and displays them in a Window. It also supports favoriting selections.
 
 To use: ```Window > Selection History```
 
-⚠️ **Requires Unity 2020.1 since it saves configuration to your UserSettings folder**
+**⚠️ Requires Unity 2020.1 since it saves configuration to your `UserSettings` folder ⚠️**
 
 # Features
 
