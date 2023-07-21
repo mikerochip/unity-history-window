@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 
-namespace SelectionHistory.Editor
+namespace MikeSchweitzer.SelectionHistory.Editor
 {
     public class SelectionHistoryWindow : EditorWindow, IHasCustomMenu
     {

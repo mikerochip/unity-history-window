@@ -1,7 +1,8 @@
 {
-    "name": "SelectionHistory.Editor",
+    "name": "MikeSchweitzer.SelectionHistory.Editor",
+    "rootNamespace": "MikeSchweitzer.SelectionHistory.Editor",
     "references": [
-        "SelectionHistory"
+        "MikeSchweitzer.SelectionHistory"
     ],
     "includePlatforms": [
         "Editor"

@@ -1,7 +1,7 @@
 ﻿using UnityEditor;
 using UnityEngine;
 
-namespace SelectionHistory.Editor
+namespace MikeSchweitzer.SelectionHistory.Editor
 {
     [FilePath("UserSettings/SelectionHistory/SelectionHistory.asset", FilePathAttribute.Location.ProjectFolder)]
     public class SelectionHistoryPreferences : ScriptableSingleton<SelectionHistoryPreferences>

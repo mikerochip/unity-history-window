@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-namespace SelectionHistory
+namespace MikeSchweitzer.SelectionHistory
 {
 	public class EditorTemporaryMemory : MonoBehaviour
 	{

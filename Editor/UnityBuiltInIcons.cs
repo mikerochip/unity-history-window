@@ -1,6 +1,6 @@
 using UnityEditor;
 
-namespace SelectionHistory.Editor
+namespace MikeSchweitzer.SelectionHistory.Editor
 {
     public static class UnityBuiltInIcons
     {

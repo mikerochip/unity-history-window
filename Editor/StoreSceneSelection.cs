@@ -3,7 +3,7 @@ using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace SelectionHistory.Editor
+namespace MikeSchweitzer.SelectionHistory.Editor
 {
     [InitializeOnLoad]
     public static class StoreSceneSelection

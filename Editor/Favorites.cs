@@ -5,7 +5,7 @@ using UnityEditor;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
-namespace SelectionHistory.Editor
+namespace MikeSchweitzer.SelectionHistory.Editor
 {
     [FilePath("UserSettings/SelectionHistory/Favorites.asset", FilePathAttribute.Location.ProjectFolder)]
     public class Favorites : ScriptableSingleton<Favorites>

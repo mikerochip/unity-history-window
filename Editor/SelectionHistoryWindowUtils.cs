@@ -2,7 +2,7 @@
 using UnityEditor.ShortcutManagement;
 using UnityEngine;
 
-namespace SelectionHistory.Editor
+namespace MikeSchweitzer.SelectionHistory.Editor
 {
 	[InitializeOnLoad]
 	public static class SelectionHistoryWindowUtils
